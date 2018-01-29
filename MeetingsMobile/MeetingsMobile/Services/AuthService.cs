@@ -33,6 +33,8 @@ namespace MeetingsMobile.Services
                 var tokenServiceResponse = await client.PostAsync(ServiceUrls.LoginUrl(), requestParamsFormUrlEncoded);
                 var responseString = await tokenServiceResponse.Content.ReadAsStringAsync();
                 var responseCode = tokenServiceResponse.StatusCode;
+                //Console.WriteLine(responseString);
+                //Console.WriteLine(responseCode);
 
                 if (responseCode == HttpStatusCode.OK)
                 {
@@ -40,7 +42,6 @@ namespace MeetingsMobile.Services
                     if (newToken != null)
                     {
                         WorkingVariables.Token = newToken;
-                        //WorkingVariables.SetRoles(newToken.Roles);
                     }
                 }
                 return (responseCode == HttpStatusCode.OK);

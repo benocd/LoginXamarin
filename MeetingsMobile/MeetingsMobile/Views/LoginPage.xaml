@@ -9,10 +9,10 @@
                 HorizontalOptions="CenterAndExpand" />
             <Entry Text="{Binding username}" Placeholder="user@email.cl"/>
             <Label Text="Password"/>
-            <Entry Text="{Binding password}" Placeholder="****"/>
+            <Entry IsPassword="True" Text="{Binding password}" Placeholder="****"/>
             
 
-            <Button Command="LoginCommand" Clicked="Button_Clicked"/>
+            <Button Text="Log In" Command="LoginCommand" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

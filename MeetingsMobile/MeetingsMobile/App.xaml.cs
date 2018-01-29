@@ -12,9 +12,18 @@ namespace MeetingsMobile
 		{
 			InitializeComponent();
 
+            MainPage = new NavigationPage(new LoginPage());
 
-			MainPage = new LoginPage();
-		}
+            /*
+              felipe
+            if (Helpers.Settings.IsLoggedIn) {
+                MainPage = new AboutPage();
+            }
+            else {
+                MainPage = new LoginPage();
+            }
+            */
+        }
 
 		protected override void OnStart ()
 		{

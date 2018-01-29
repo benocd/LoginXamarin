@@ -12,8 +12,11 @@ namespace MeetingsMobile.ViewModels
             Title = "About";
 
             OpenWebCommand = new Command(() => Device.OpenUri(new Uri("https://xamarin.com/platform")));
+            LogOut = new Command(() => Helpers.Settings.LogOut());
         }
 
         public ICommand OpenWebCommand { get; }
+        public ICommand LogOut { get; }
+
     }
 }

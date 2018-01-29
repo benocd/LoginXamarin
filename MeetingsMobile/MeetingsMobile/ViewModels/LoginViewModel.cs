@@ -86,6 +86,7 @@ namespace MeetingsMobile.ViewModels
 
         public async Task LoginAsync()
         {
+            
             IsBusy = true;
 
             //var ctx = new ServiceContext<bool>();
@@ -95,27 +96,64 @@ namespace MeetingsMobile.ViewModels
                 var isAuthenticated = await login.Authenticate(username, password);
                 if (isAuthenticated)
                 {
-                    //ResultAsync = true;
-                   
-                    Settings.UserName = username; 
-
-                     /*await userViewModel.GetScaffoldUserAsync(WorkingVariables.Token.UserId);
-                    _deviceViewModel.RegisterDevice();
-                     Application.Current.MainPage = new MainContentMDP();*/
+                     //Settings.UserName = username;
+                    Settings.IsLoggedIn = true;
                 }
                 else
                 {
-                   /*
-                    * ResultAsync = false;
-                    *  LoginError = !ResultAsync;
-                    */
+                    Settings.IsLoggedIn = false;
+                    await Application.Current.MainPage.DisplayAlert("Login Error", "Login Error! please try Again", "Ok");
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
             }
 
             IsBusy = false;
+  
+
+
+
+
+
+
+            /*
+            bool isLoginSuccess = false;
+            if (IsBusy)
+                return;
+
+            IsBusy = true;
+            loginCommand.ChangeCanExecute();
+
+            try
+            {
+
+                isLoginSuccess = await cpFeeds.GetAccessToken(this.UserName, this.Password);
+            }
+            catch (Exception ex)
+            {
+                isLoginSuccess = false;
+            }
+
+            finally
+            {
+                IsBusy = false;
+                loginCommand.ChangeCanExecute();
+            }
+
+            if (isLoginSuccess)
+            {
+                await page.Navigation.PushModalAsync(new RootPage());
+                if (Device.OS == TargetPlatform.Android)
+                    Application.Current.MainPage = new RootPage();
+            }
+            else
+            {
+                await page.DisplayAlert("Login Error", "Login Error! please try Again", "Ok");
+            }
+            */
+
         }
     }
 }
