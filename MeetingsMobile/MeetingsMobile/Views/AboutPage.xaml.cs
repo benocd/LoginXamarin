@@ -12,5 +12,10 @@ namespace MeetingsMobile.Views
 		{
 			InitializeComponent ();
 		}
+
+        public void LogOutBtn() {
+            Helpers.Settings.LogOut();
+            ((NavigationPage)this.Parent).PushAsync(new LoginPage(), true);
+        }
 	}
 }

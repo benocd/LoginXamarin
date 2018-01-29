@@ -86,17 +86,13 @@ namespace MeetingsMobile.ViewModels
 
         public async Task LoginAsync()
         {
-            
             IsBusy = true;
-
-            //var ctx = new ServiceContext<bool>();
 
             try
             {
                 var isAuthenticated = await login.Authenticate(username, password);
                 if (isAuthenticated)
                 {
-                     //Settings.UserName = username;
                     Settings.IsLoggedIn = true;
                 }
                 else
@@ -111,49 +107,6 @@ namespace MeetingsMobile.ViewModels
             }
 
             IsBusy = false;
-  
-
-
-
-
-
-
-            /*
-            bool isLoginSuccess = false;
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-            loginCommand.ChangeCanExecute();
-
-            try
-            {
-
-                isLoginSuccess = await cpFeeds.GetAccessToken(this.UserName, this.Password);
-            }
-            catch (Exception ex)
-            {
-                isLoginSuccess = false;
-            }
-
-            finally
-            {
-                IsBusy = false;
-                loginCommand.ChangeCanExecute();
-            }
-
-            if (isLoginSuccess)
-            {
-                await page.Navigation.PushModalAsync(new RootPage());
-                if (Device.OS == TargetPlatform.Android)
-                    Application.Current.MainPage = new RootPage();
-            }
-            else
-            {
-                await page.DisplayAlert("Login Error", "Login Error! please try Again", "Ok");
-            }
-            */
-
         }
     }
 }
